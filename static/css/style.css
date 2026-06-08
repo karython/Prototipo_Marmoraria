@@ -787,6 +787,14 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: flex-end;
 }
+.portfolio-credit {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--gold);
+  opacity: .85;
+  margin-top: .25rem;
+}
 .portfolio-zoom {
   position: absolute;
   top: 1rem; right: 1rem;
