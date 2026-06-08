@@ -5,24 +5,24 @@
 
 /* ── Custom Properties ─────────────────────────────────── */
 :root {
-  --navy:        #1a2535;
-  --navy-deep:   #0d1520;
-  --gold:        #c4a35a;
-  --gold-light:  #d4b87a;
-  --gold-dark:   #a88940;
-  --cream:       #faf8f4;
-  --cream-dark:  #f0ede6;
+  --navy:        #141414;
+  --navy-deep:   #0e0e0e;
+  --gold:        #c9a84c;
+  --gold-light:  #e8cc82;
+  --gold-dark:   #9a7a2e;
+  --cream:       #f5f5f0;
+  --cream-dark:  #eaeae5;
   --stone:       #8a8680;
   --stone-light: #b8b4ae;
   --text:        #2c2c2c;
   --text-muted:  #6b6965;
   --white:       #ffffff;
-  --border:      rgba(196,163,90,.18);
+  --border:      rgba(201,168,76,.18);
   --border-light: rgba(255,255,255,.12);
   --shadow-sm:   0 2px 12px rgba(0,0,0,.07);
   --shadow-md:   0 8px 32px rgba(0,0,0,.10);
   --shadow-lg:   0 20px 60px rgba(0,0,0,.14);
-  --shadow-gold: 0 8px 32px rgba(196,163,90,.22);
+  --shadow-gold: 0 8px 32px rgba(201,168,76,.22);
   --radius-sm:   6px;
   --radius-md:   12px;
   --radius-lg:   20px;
@@ -182,7 +182,7 @@ input, textarea, select { font-family: inherit; }
   gap: .75rem;
 }
 .logo-mark {
-  width: 40px; height: 40px;
+  width: 60px; height: 60px;
   border-radius: 50%;
   background: var(--gold);
   color: var(--navy-deep);
@@ -453,7 +453,7 @@ input, textarea, select { font-family: inherit; }
 }
 .about-image-wrap img {
   width: 100%;
-  height: 520px;
+  height: 800px;
   object-fit: cover;
   transition: transform .6s ease;
 }
@@ -884,6 +884,16 @@ input, textarea, select { font-family: inherit; }
   overflow: hidden;
 }
 .catalog-img .material-bg { position: static; width: 100%; height: 100%; }
+.catalog-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+.catalog-card:hover .catalog-img img { transform: scale(1.06); }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
 
 .catalog-body { padding: 1.25rem; }
 .catalog-cat {
@@ -961,8 +971,27 @@ input, textarea, select { font-family: inherit; }
 }
 .review-card:hover {
   background: rgba(255,255,255,.08);
-  border-color: rgba(196,163,90,.35);
+  border-color: rgba(201,168,76,.35);
   transform: translateY(-4px);
+}
+
+/* Screenshot-style review cards */
+.review-screenshot-card {
+  padding: .5rem;
+  background: rgba(255,255,255,.97);
+  border-color: rgba(255,255,255,.15);
+  overflow: hidden;
+}
+.review-screenshot-card:hover {
+  background: #ffffff;
+  transform: translateY(-4px) scale(1.01);
+}
+.review-screenshot-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
 }
 
 .review-header {
@@ -1035,8 +1064,8 @@ input, textarea, select { font-family: inherit; }
 .cta-section {
   position: relative;
   background:
-    linear-gradient(135deg, rgba(13,21,32,.96) 0%, rgba(26,37,53,.88) 100%),
-    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=60') center/cover no-repeat;
+    linear-gradient(135deg, rgba(14,14,14,.95) 0%, rgba(20,20,20,.88) 100%),
+    url('/static/img/img7.webp') center/cover no-repeat;
   overflow: hidden;
 }
 .cta-overlay {
