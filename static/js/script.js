@@ -407,11 +407,14 @@ function initQuoteForm() {
   const success = $('#formSuccess');
   if (!form) return;
 
+  const WHATSAPP_NUMBER = '551145863201';
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const nome = $('#nome')?.value.trim();
-    const tel  = $('#telefone')?.value.trim();
+    const nome     = $('#nome')?.value.trim();
+    const tel      = $('#telefone')?.value.trim();
+    const mensagem = $('#mensagem')?.value.trim();
 
     if (!nome || !tel) {
       // Simple highlight for empty fields
@@ -427,9 +430,15 @@ function initQuoteForm() {
       submitBtn.disabled = true;
     }
 
+    let texto = `Olá, gostaria de solicitar um orçamento!\n\n*Nome:* ${nome}\n*Telefone:* ${tel}`;
+    if (mensagem) { texto += `\n*Mensagem:* ${mensagem}`; }
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+
     setTimeout(() => {
       form.style.display = 'none';
       if (success) { success.style.display = 'block'; success.classList.add('visible'); }
+      window.open(whatsappUrl, '_blank', 'noopener');
     }, 900);
   });
 
