@@ -423,22 +423,25 @@ function initQuoteForm() {
       return;
     }
 
-    // Simulate async send
+    let texto = `Olá, gostaria de solicitar um orçamento!\n\n*Nome:* ${nome}\n*Telefone:* ${tel}`;
+    if (mensagem) { texto += `\n*Mensagem:* ${mensagem}`; }
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+    // Must open synchronously within the click handler, otherwise mobile
+    // browsers/webviews treat it as a popup and block it silently.
+    const win = window.open(whatsappUrl, '_blank', 'noopener');
+    if (!win) { window.location.href = whatsappUrl; }
+
     const submitBtn = form.querySelector('[type="submit"]');
     if (submitBtn) {
       submitBtn.textContent = 'Enviando…';
       submitBtn.disabled = true;
     }
 
-    let texto = `Olá, gostaria de solicitar um orçamento!\n\n*Nome:* ${nome}\n*Telefone:* ${tel}`;
-    if (mensagem) { texto += `\n*Mensagem:* ${mensagem}`; }
-
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
-
     setTimeout(() => {
       form.style.display = 'none';
       if (success) { success.style.display = 'block'; success.classList.add('visible'); }
-      window.open(whatsappUrl, '_blank', 'noopener');
     }, 900);
   });
 
