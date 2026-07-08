@@ -423,7 +423,7 @@ function initQuoteForm() {
       return;
     }
 
-    let texto = `Olá, gostaria de solicitar um orçamento!\n\n*Nome:* ${nome}\n*Telefone:* ${tel}`;
+    let texto = `*[Site Nobile Marmoraria]* 📩\nOlá, gostaria de solicitar um orçamento!\n\n*Nome:* ${nome}\n*Telefone:* ${tel}`;
     if (mensagem) { texto += `\n*Mensagem:* ${mensagem}`; }
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
